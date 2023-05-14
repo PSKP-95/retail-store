@@ -1,0 +1,32 @@
+.item-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 50px;
+    max-height: 200px;
+    border-radius: 4px;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+    overflow: hidden;
+    padding: 5px;
+    padding-left: 15px;
+    margin: 5px;
+    align-items: center;
+    font-weight: 600;
+}
+
+.fixed-width {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px;
+    align-items: center;
+    font-weight: 600;
+}
+
+.item-name {
+    width: 50%;
+}
+

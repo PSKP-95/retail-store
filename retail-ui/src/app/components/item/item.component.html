@@ -1,0 +1,12 @@
+<div class="item-container">
+    <div class="item-name" (click)="itemNameClicked()">{{name}}</div>
+    <div class="fixed-width">
+        <div class="item-price" (click)="itemNameClicked()">₹ <s *ngIf="originalPrice > price" style="color:red">{{originalPrice}}</s> &nbsp;<b style="color: green">{{price}}</b> / {{unit}}</div>
+        <ng-template [ngIf]="cartButtonEnabled" [ngIfElse]="elseBlock">
+            <button mat-mini-fab color="accent" (click)="addToCart()"><mat-icon>add_shopping_cart</mat-icon></button>
+        </ng-template>
+        <ng-template #elseBlock>
+            <button mat-mini-fab color="warn" (click)="removeFromCart()"><mat-icon>remove_shopping_cart</mat-icon></button>
+        </ng-template>
+    </div>
+</div>

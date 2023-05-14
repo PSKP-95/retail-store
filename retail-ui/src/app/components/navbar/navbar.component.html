@@ -1,0 +1,62 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Avabodha</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Retail</a>
+      <a mat-list-item href="https://avabodha.in">Blog</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span routerLink="">Avabodha Retail</span>
+      <span class="spacer"></span>
+      
+      <ng-template [ngIf]="isLoggedIn" [ngIfElse]="elseBlock">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button routerLink="profile" mat-menu-item>
+            <mat-icon>person</mat-icon>
+            <span>Profile</span>
+          </button>
+          <button routerLink="cart" mat-menu-item>
+            <mat-icon>shopping_cart</mat-icon>
+            <span>Cart</span>
+          </button>
+          <button routerLink="order" mat-menu-item>
+            <mat-icon>local_shipping</mat-icon>
+            <span>Orders</span>
+          </button>
+          <mat-divider></mat-divider>
+          <button (click)="doLogout()" routerLink="" mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </ng-template>
+      <ng-template #elseBlock>
+        <button (click)="openDialog('0ms', '0ms')" mat-flat-button color="accent">Login</button>
+      </ng-template>
+      
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div class="spinner-container" *ngIf="spinner">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

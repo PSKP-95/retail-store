@@ -1,0 +1,18 @@
+<div class="vert-container">
+    <div class="name-container">
+        <div class="item-name">{{item.name}}</div>
+        <div class="fixed-width">
+            <button mat-icon-button>
+                <mat-icon style="color: green;">edit</mat-icon>
+            </button>
+            <button (click)="removeItemFromCart()" mat-icon-button>
+                <mat-icon style="color: red;">delete</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="price-container">
+        <div class="item-price" ><b>Qty: </b>{{quantity}} {{item.unit}}</div>
+        <div class="item-price" ><b>Rate: </b>₹ <s  style="color:red">{{item.originalPrice}}</s> &nbsp;<b style="color: green">{{item.price}}  / {{item.unit}}</b></div>
+        <div class="item-price" ><b>Total: </b>₹ <s  style="color:red">{{doMultiplication(item.originalPrice, quantity)}}</s> &nbsp;<b style="color: green">{{doMultiplication(item.price, quantity)}}</b></div>
+    </div>
+</div>

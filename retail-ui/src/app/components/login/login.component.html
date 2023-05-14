@@ -1,0 +1,120 @@
+<h3 mat-dialog-title align="middle">
+    <mat-button-toggle-group >
+        <mat-button-toggle [checked]="true" (click)="dialogState(true)">Login</mat-button-toggle>
+        <mat-button-toggle (click)="dialogState(false)">Signup</mat-button-toggle>
+    </mat-button-toggle-group>
+</h3>
+
+<ng-template [ngIf]="isLogin" [ngIfElse]="elseBlock">
+    <div mat-dialog-content>
+        <form [formGroup]="login">
+            <mat-form-field [style.width.%]="100" appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" formControlName="email" required>
+                <mat-error *ngIf="login.get('email')?.invalid">Invalid email</mat-error>
+            </mat-form-field><br>
+            <mat-form-field [style.width.%]="100" appearance="fill">
+                <mat-label>Enter your password</mat-label>
+                <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                <mat-error *ngIf="login.get('password')?.hasError('required')">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf="login.get('password')?.hasError('minlength')">
+                    Minimum length should be 6
+                </mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </form>
+    </div>
+</ng-template>
+<ng-template #elseBlock>
+    <div mat-dialog-content>
+        <form [formGroup]="signup">
+            <mat-form-field *ngIf="signUpFormPage == 1" [style.width.%]="100" appearance="fill">
+                <mat-label>Enter your name</mat-label>
+                <input matInput placeholder="John Doe" formControlName="name" required>
+            </mat-form-field>
+            <mat-form-field *ngIf="signUpFormPage == 1" [style.width.%]="100" appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" formControlName="email" required>
+                <mat-error *ngIf="signup.get('email')?.invalid">Invalid email</mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="signUpFormPage == 1" [style.width.%]="100" appearance="fill">
+                <mat-label>Enter your mobile no</mat-label>
+                <input matInput placeholder="9876543210" formControlName="mobNo" required>
+                <mat-error *ngIf="signup.get('mobNo')?.hasError('required')">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf="signup.get('mobNo')?.hasError('pattern')">
+                    only numbers allowed
+                </mat-error>
+                <mat-error *ngIf="signup.get('mobNo')?.hasError('minlength') || signup.get('mobNo')?.hasError('maxlength')">
+                    length should be 10
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="signUpFormPage == 2" [style.width.%]="100" appearance="fill">
+                <mat-label>Enter street</mat-label>
+                <input matInput placeholder="e.g. Sanjivani Poultry Farm" formControlName="street" required>
+                <mat-error *ngIf="signup.get('street')?.invalid">Invalid street</mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="signUpFormPage == 2" [style.width.%]="100" appearance="fill">
+                <mat-label>Enter village</mat-label>
+                <input matInput placeholder="e.g. Kavathe Ekand" formControlName="village" required>
+                <mat-error *ngIf="signup.get('village')?.invalid">Invalid village</mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="signUpFormPage == 2" [style.width.%]="100" appearance="fill">
+                <mat-label>Enter pin code</mat-label>
+                <input matInput placeholder="e.g. 416307" formControlName="pin" required>
+                <mat-error *ngIf="signup.get('pin')?.hasError('required')">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf="signup.get('pin')?.hasError('pattern')">
+                    only numbers allowed
+                </mat-error>
+                <mat-error *ngIf="signup.get('pin')?.hasError('minlength') || signup.get('pin')?.hasError('maxlength')">
+                    length should be 6
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="signUpFormPage == 1" [style.width.%]="100" appearance="fill">
+                <mat-label>Enter your password</mat-label>
+                <input (input)="checkPassword()" formControlName="password" matInput [type]="hide1 ? 'password' : 'text'">
+                <mat-error *ngIf="signup.get('password')?.hasError('required')">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf="signup.get('password')?.hasError('minlength')">
+                    Minimum length should be 6
+                </mat-error>
+                <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                    <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <mat-form-field *ngIf="signUpFormPage == 1" [style.width.%]="100" appearance="fill">
+                <mat-label>Re-enter your password</mat-label>
+                <input (input)="checkPassword()" formControlName="repassword" matInput [type]="hide2 ? 'password' : 'text'">
+                <mat-error *ngIf="signup.get('repassword')?.hasError('notSame')">
+                    Passwords not same
+                </mat-error>
+                <mat-error *ngIf="signup.get('password')?.hasError('minlength')">
+                    Minimum length should be 6
+                </mat-error>
+                <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                    <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </form>
+    </div>
+</ng-template>
+
+<div mat-dialog-actions align="end">
+    <button *ngIf="signUpFormPage == 1" mat-stroked-button color="warn" mat-dialog-close>Cancel</button>
+    <button *ngIf="signUpFormPage == 2" (click)="changePage(1)" mat-stroked-button color="warn">Back</button>
+    <ng-template [ngIf]="isLogin" [ngIfElse]="elseButton">
+        <button mat-stroked-button (click)="doLogin()" cdkFocusInitial>Login</button>
+    </ng-template>
+    <ng-template #elseButton>
+        <button *ngIf="signUpFormPage == 1" mat-stroked-button (click)="changePage(2)" cdkFocusInitial>Next</button>
+        <button *ngIf="signUpFormPage == 2" mat-stroked-button (click)="doSignup()" cdkFocusInitial>Signup</button>
+    </ng-template>
+</div>

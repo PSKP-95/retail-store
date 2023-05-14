@@ -1,0 +1,77 @@
+[
+    {
+        "name": "product:create",
+        "description": "Create new product",
+        "roles": ["Admin"]
+    },
+    {
+        "name": "product:edit",
+        "description": "Edit existing product",
+        "roles": ["Admin"]
+    },
+    {
+        "name": "product:get",
+        "description": "get product",
+        "roles": ["Admin", "Buyer"]
+    },
+    {
+        "name": "iam:getProfile",
+        "description": "Get OWN profile",
+        "roles": ["Admin", "Buyer"]
+    },
+    {
+        "name": "iam:editProfile",
+        "description": "Edit OWN Profile",
+        "roles": ["Admin", "Buyer"]
+    },
+    {
+        "name": "iam:changePassword",
+        "description": "change OWN password",
+        "roles": ["Admin", "Buyer"]
+    },
+    {
+        "name": "iam:searchUser",
+        "description": "admins can search users",
+        "roles": ["Admin"]
+    },
+    {
+        "name": "iam:changeRole",
+        "description": "admins can change roles of users",
+        "roles": ["Admin"]
+    },
+    {
+        "name": "cart:getItems",
+        "description": "get items from cart",
+        "roles": ["Admin", "Buyer"]
+    },
+    {
+        "name": "cart:addItem",
+        "description": "add item to cart",
+        "roles": ["Admin", "Buyer"]
+    },
+    {
+        "name": "cart:removeItem",
+        "description": "remove item from cart",
+        "roles": ["Admin", "Buyer"]
+    },
+    {
+        "name": "cart:changeQuantity",
+        "description": "change item quantity in cart",
+        "roles": ["Admin", "Buyer"]
+    },
+    {
+        "name": "order:createOrder",
+        "description": "create new order",
+        "roles": ["Admin"]
+    },
+    {
+        "name": "order:addItems",
+        "description": "add item to order",
+        "roles": ["Admin", "Buyer"]
+    },
+    {
+        "name": "order:editOrder",
+        "description": "edit order",
+        "roles": ["Admin"]
+    }
+]

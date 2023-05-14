@@ -1,0 +1,5 @@
+<div class="horizontal">
+    <div class="container" >
+        <app-cart-item *ngFor="let item of inCartItemIds" [iid]="item.iid" [quantity]="item.qty" (quantityChanged)="sendNewQuantity(item.iid, $event)"></app-cart-item>
+    </div>
+</div>

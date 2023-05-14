@@ -1,0 +1,7 @@
+
+<div class="demo">
+
+  <app-item *ngFor="let item of items" (itemClicked)="openProduct(item.id)" (itemSelected)="addToCart(item.id, item.name)" (itemDisselected)="removeFromCart(item.id, item.name)" [originalPrice]="item.originalPrice" [unit]="item.unit" [cartButtonEnabled]="checkInCart(item.id) != -1 ? false : true" [price]="item.price" [name]="item.name"></app-item>
+
+</div>
+

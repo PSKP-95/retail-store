@@ -1,0 +1,6 @@
+[
+    {
+        "name": "User",
+        "scopes": ["product:get", "iam:getProfile", "iam:editProfile"]
+    }
+]
